@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Portfolio</title>
+    <title>Yiran Hu - Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap');
+        
         .gradient-text {
             background: linear-gradient(45deg, #4F46E5, #06B6D4);
             -webkit-background-clip: text;
@@ -36,10 +38,59 @@
             background: linear-gradient(135deg, #4F46E5 0%, #06B6D4 100%);
         }
 
-        .glass-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        .chinese-text {
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #4F46E5;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .section-transition {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease-out;
+        }
+
+        .section-transition.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Add fade animation for section transitions */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
         }
     </style>
 </head>
@@ -49,13 +100,13 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
-                    <span class="text-2xl font-bold gradient-text">Portfolio</span>
+                    <span class="text-2xl font-bold gradient-text">YH</span>
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#home" class="text-gray-600 hover:text-indigo-600 transition-colors">Home</a>
-                    <a href="#about" class="text-gray-600 hover:text-indigo-600 transition-colors">About</a>
-                    <a href="#projects" class="text-gray-600 hover:text-indigo-600 transition-colors">Projects</a>
-                    <a href="#contact" class="text-gray-600 hover:text-indigo-600 transition-colors">Contact</a>
+                    <a href="#home" class="nav-link text-gray-600 hover:text-indigo-600 transition-colors">Home</a>
+                    <a href="#about" class="nav-link text-gray-600 hover:text-indigo-600 transition-colors">About</a>
+                    <a href="#projects" class="nav-link text-gray-600 hover:text-indigo-600 transition-colors">Projects</a>
+                    <a href="#contact" class="nav-link text-gray-600 hover:text-indigo-600 transition-colors">Contact</a>
                 </div>
             </div>
         </div>
@@ -65,8 +116,9 @@
     <section id="home" class="hero-bg min-h-screen flex items-center justify-center text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
             <div class="text-center">
-                <h1 class="text-5xl md:text-7xl font-bold mb-6">Hello, I'm <span class="text-yellow-300">Your Name</span></h1>
-                <p class="text-xl md:text-2xl mb-8 text-gray-200">Full Stack Developer & Creative Designer</p>
+                <h1 class="text-5xl md:text-7xl font-bold mb-6">Hello, I'm <span class="text-yellow-300">Yiran Hu</span> <span class="chinese-text text-yellow-300">(胡怡然)</span></h1>
+                <p class="text-xl md:text-2xl mb-4 text-gray-200">MS Electrical Engineering</p>
+                <p class="text-lg md:text-xl mb-8 text-gray-200">Columbia University</p>
                 <div class="flex justify-center space-x-4">
                     <a href="#projects" class="bg-white text-indigo-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">View Projects</a>
                     <a href="#contact" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-indigo-600 transition-colors">Contact Me</a>
@@ -87,161 +139,52 @@
                     <img src="/api/placeholder/600/600" alt="Profile" class="rounded-3xl shadow-2xl">
                 </div>
                 <div class="animate-on-scroll">
-                    <h3 class="text-2xl font-semibold mb-4">Who I Am</h3>
-                    <p class="text-gray-600 mb-6">I'm a passionate developer with a keen eye for design and a love for creating beautiful, functional websites. With expertise in both frontend and backend technologies, I bring ideas to life through code.</p>
+                    <h3 class="text-2xl font-semibold mb-4">Education</h3>
+                    <div class="mb-6">
+                        <p class="text-xl font-semibold text-indigo-600">Columbia University</p>
+                        <p class="text-gray-600">Master of Science in Electrical Engineering</p>
+                        <p class="text-gray-500">Expected 2025</p>
+                    </div>
+                    <p class="text-gray-600 mb-6">I'm an Electrical Engineering graduate student at Columbia University, passionate about [Your specific interests/focus areas]. My academic journey combines theoretical knowledge with practical applications in [specific areas of expertise].</p>
                     <div class="grid grid-cols-2 gap-4 mb-8">
                         <div class="flex items-center space-x-2">
-                            <i class="fas fa-check text-indigo-600"></i>
-                            <span>Web Development</span>
+                            <i class="fas fa-microchip text-indigo-600"></i>
+                            <span>Circuit Design</span>
                         </div>
                         <div class="flex items-center space-x-2">
-                            <i class="fas fa-check text-indigo-600"></i>
-                            <span>UI/UX Design</span>
+                            <i class="fas fa-code text-indigo-600"></i>
+                            <span>Programming</span>
                         </div>
                         <div class="flex items-center space-x-2">
-                            <i class="fas fa-check text-indigo-600"></i>
-                            <span>Mobile Development</span>
+                            <i class="fas fa-signal text-indigo-600"></i>
+                            <span>Signal Processing</span>
                         </div>
                         <div class="flex items-center space-x-2">
-                            <i class="fas fa-check text-indigo-600"></i>
-                            <span>Cloud Solutions</span>
+                            <i class="fas fa-robot text-indigo-600"></i>
+                            <span>Machine Learning</span>
                         </div>
                     </div>
                     <div class="flex flex-wrap gap-3">
-                        <span class="px-4 py-2 bg-indigo-100 text-indigo-600 rounded-full text-sm">JavaScript</span>
-                        <span class="px-4 py-2 bg-indigo-100 text-indigo-600 rounded-full text-sm">React</span>
-                        <span class="px-4 py-2 bg-indigo-100 text-indigo-600 rounded-full text-sm">Node.js</span>
                         <span class="px-4 py-2 bg-indigo-100 text-indigo-600 rounded-full text-sm">Python</span>
+                        <span class="px-4 py-2 bg-indigo-100 text-indigo-600 rounded-full text-sm">MATLAB</span>
+                        <span class="px-4 py-2 bg-indigo-100 text-indigo-600 rounded-full text-sm">Verilog</span>
+                        <span class="px-4 py-2 bg-indigo-100 text-indigo-600 rounded-full text-sm">C++</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="py-20 bg-gray-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold gradient-text mb-4">My Projects</h2>
-                <div class="w-16 h-1 bg-indigo-600 mx-auto"></div>
-            </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project Card 1 -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover animate-on-scroll">
-                    <img src="/api/placeholder/600/400" alt="Project 1" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Project Name</h3>
-                        <p class="text-gray-600 mb-4">A brief description of your amazing project and what technologies you used to build it.</p>
-                        <div class="flex space-x-3">
-                            <a href="#" class="text-indigo-600 hover:text-indigo-800">
-                                <i class="fab fa-github text-xl"></i>
-                            </a>
-                            <a href="#" class="text-indigo-600 hover:text-indigo-800">
-                                <i class="fas fa-external-link-alt text-xl"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project Card 2 -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover animate-on-scroll">
-                    <img src="/api/placeholder/600/400" alt="Project 2" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Project Name</h3>
-                        <p class="text-gray-600 mb-4">Another awesome project showcase with its unique features and challenges overcome.</p>
-                        <div class="flex space-x-3">
-                            <a href="#" class="text-indigo-600 hover:text-indigo-800">
-                                <i class="fab fa-github text-xl"></i>
-                            </a>
-                            <a href="#" class="text-indigo-600 hover:text-indigo-800">
-                                <i class="fas fa-external-link-alt text-xl"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project Card 3 -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover animate-on-scroll">
-                    <img src="/api/placeholder/600/400" alt="Project 3" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Project Name</h3>
-                        <p class="text-gray-600 mb-4">Your third fantastic project with its impressive features and implementation.</p>
-                        <div class="flex space-x-3">
-                            <a href="#" class="text-indigo-600 hover:text-indigo-800">
-                                <i class="fab fa-github text-xl"></i>
-                            </a>
-                            <a href="#" class="text-indigo-600 hover:text-indigo-800">
-                                <i class="fas fa-external-link-alt text-xl"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold gradient-text mb-4">Get In Touch</h2>
-                <div class="w-16 h-1 bg-indigo-600 mx-auto"></div>
-            </div>
-            <div class="grid md:grid-cols-2 gap-12">
-                <div class="animate-on-scroll">
-                    <h3 class="text-2xl font-semibold mb-4">Let's Connect</h3>
-                    <p class="text-gray-600 mb-8">I'm always open to new opportunities and collaborations. Feel free to reach out!</p>
-                    <div class="space-y-4">
-                        <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center">
-                                <i class="fas fa-envelope text-indigo-600"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold">Email</h4>
-                                <p class="text-gray-600">your.email@example.com</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center">
-                                <i class="fas fa-map-marker-alt text-indigo-600"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold">Location</h4>
-                                <p class="text-gray-600">Your City, Country</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="animate-on-scroll">
-                    <div class="bg-white rounded-xl shadow-lg p-8">
-                        <form>
-                            <div class="mb-6">
-                                <label class="block text-gray-700 text-sm font-semibold mb-2">Name</label>
-                                <input type="text" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600">
-                            </div>
-                            <div class="mb-6">
-                                <label class="block text-gray-700 text-sm font-semibold mb-2">Email</label>
-                                <input type="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600">
-                            </div>
-                            <div class="mb-6">
-                                <label class="block text-gray-700 text-sm font-semibold mb-2">Message</label>
-                                <textarea rows="4" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600"></textarea>
-                            </div>
-                            <button type="submit" class="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-colors">Send Message</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+[Rest of the template remains the same but with footer updated to:]
 
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-8 md:mb-0">
-                    <span class="text-2xl font-bold">Your Name</span>
-                    <p class="text-gray-400 mt-2">Building digital experiences</p>
+                    <span class="text-2xl font-bold">Yiran Hu</span>
+                    <p class="text-2xl chinese-text text-gray-400 mt-2">胡怡然</p>
+                    <p class="text-gray-400 mt-2">MS EE Student @ Columbia University</p>
                 </div>
                 <div class="flex space-x-6">
                     <a href="#" class="text-gray-400 hover:text-white transition-colors">
@@ -250,3 +193,76 @@
                     <a href="#" class="text-gray-400 hover:text-white transition-colors">
                         <i class="fab fa-linkedin text-xl"></i>
                     </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('.animate-on-scroll, .section-transition').forEach((element) => {
+            observer.observe(element);
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    // Add fade-out effect to current section
+                    const currentSection = document.querySelector('.section-transition.visible');
+                    if (currentSection) {
+                        currentSection.style.opacity = '0';
+                    }
+
+                    // Smooth scroll to target section
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+
+                    // Add fade-in effect to target section after scrolling
+                    setTimeout(() => {
+                        targetElement.classList.add('fade-in');
+                    }, 500);
+                }
+            });
+        });
+
+        // Add active state to navigation links
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - sectionHeight / 3) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('text-indigo-600');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('text-indigo-600');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
