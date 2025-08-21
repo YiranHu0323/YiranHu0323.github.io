@@ -35,7 +35,7 @@
         }
 
         .hero-bg {
-            background: linear-gradient(135deg, #4F46E5 0%, #06B6D4 100%);
+            background: #e3f2fd;
         }
 
         .chinese-text {
@@ -49,6 +49,8 @@
         .nav-link {
             position: relative;
             transition: color 0.3s ease;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
         }
 
         .nav-link::after {
@@ -57,95 +59,106 @@
             width: 0;
             height: 2px;
             bottom: -2px;
-            left: 0;
+            left: 50%;
             background-color: #4F46E5;
-            transition: width 0.3s ease;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
         }
 
         .nav-link:hover::after {
-            width: 100%;
+            width: 80%;
         }
 
-        /* .section-transition {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.5s ease-out;
+        nav {
+            z-index: 9999 !important;
+            position: fixed !important;
         }
 
-        .section-transition.visible {
-            opacity: 1;
-            transform: translateY(0);
-        } */
-
-        /* Add fade animation for section transitions
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        body {
+            padding-top: 0;
         }
 
-        .fade-in {
-            animation: fadeIn 0.6s ease-out forwards;
-        } */
+        section {
+            scroll-margin-top: 80px;
+        }
     </style>
 </head>
 <body class="bg-gray-50">
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md shadow-sm">
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md shadow-sm" style="z-index: 9999;">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
-                    <span class="text-2xl font-bold gradient-text">YH</span>
+                    <span class="text-xl font-bold text-indigo-600"></span>
                 </div>
-                <div class="hidden md:flex items-center space-x-8">
+                <div class="hidden md:flex items-center space-x-4">
                     <a href="#home" class="nav-link text-gray-600 hover:text-indigo-600 transition-colors">Home</a>
                     <a href="#about" class="nav-link text-gray-600 hover:text-indigo-600 transition-colors">About</a>
+                    <a href="#experience" class="nav-link text-gray-600 hover:text-indigo-600 transition-colors">Experience</a>
                     <a href="#projects" class="nav-link text-gray-600 hover:text-indigo-600 transition-colors">Projects</a>
+                    <a href="#dola" class="nav-link text-gray-600 hover:text-indigo-600 transition-colors">Dola</a>
                     <a href="#contact" class="nav-link text-gray-600 hover:text-indigo-600 transition-colors">Contact</a>
                 </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-600 hover:text-indigo-600 focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-md border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#home" class="block px-3 py-2 text-gray-600 hover:text-indigo-600 transition-colors">Home</a>
+                <a href="#about" class="block px-3 py-2 text-gray-600 hover:text-indigo-600 transition-colors">About</a>
+                <a href="#experience" class="block px-3 py-2 text-gray-600 hover:text-indigo-600 transition-colors">Experience</a>
+                <a href="#projects" class="block px-3 py-2 text-gray-600 hover:text-indigo-600 transition-colors">Projects</a>
+                <a href="#dola" class="block px-3 py-2 text-gray-600 hover:text-indigo-600 transition-colors">Dola</a>
+                <a href="#contact" class="block px-3 py-2 text-gray-600 hover:text-indigo-600 transition-colors">Contact</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero-bg min-h-screen flex items-center justify-center text-white">
+    <!-- Hero -->
+    <section id="home" class="hero-bg min-h-screen flex items-center justify-center text-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
             <div class="text-center">
-                <h1 class="text-5xl md:text-7xl font-bold mb-6">Hello, I'm <span class="text-yellow-300">Yiran Hu</span> <span class="chinese-text text-yellow-300">(胡怡然)</span></h1>
-                <p class="text-xl md:text-2xl mb-4 text-gray-200">MS Electrical Engineering</p>
-                <p class="text-lg md:text-xl mb-8 text-gray-200">Columbia University</p>
+                <h1 class="text-5xl md:text-7xl font-bold mb-6">Hello, I'm <span class="text-indigo-600">Yiran Hu</span> <span class="chinese-text text-indigo-600">(胡怡然)</span></h1>
+                <p class="text-xl md:text-2xl mb-4 text-gray-700">PhD Student in Electrical Engineering</p>
+                <p class="text-lg md:text-xl mb-8 text-gray-700">University of Notre Dame</p>
                 <div class="flex justify-center space-x-4">
-                    <a href="#projects" class="bg-white text-indigo-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">View Projects</a>
-                    <a href="#contact" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-indigo-600 transition-colors">Contact Me</a>
+                    <a href="#projects" class="bg-indigo-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-indigo-700 transition-colors">View Projects</a>
+                    <a href="#contact" class="border-2 border-indigo-600 text-indigo-600 px-8 py-3 rounded-full font-semibold hover:bg-indigo-600 hover:text-white transition-colors">Contact Me</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- About -->
     <section id="about" class="py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold gradient-text mb-4">About Me</h2>
-                <div class="w-16 h-1 bg-indigo-600 mx-auto"></div>
+                <h2 class="text-4xl font-bold text-indigo-600 mb-4">About Me</h2>
+                <div class="w-16 h-1 bg-indigo-600 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-8">I'm a first year Electrical Engineering PhD student at University of Notre Dame, passionate about human-robot-interaction, computer vision, and machine learning.</p>
             </div>
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <!-- <div class="animate-on-scroll">
-                    <img src="/api/placeholder/600/600" alt="Profile" class="rounded-3xl shadow-2xl">
-                </div> -->
+            <div class="grid md:grid-cols-2 gap-12 items-start">
                 <div class="animate-on-scroll">
                     <h3 class="text-2xl font-semibold mb-4">Education</h3>
                     <div class="mb-6">
-                        <p class="text-xl font-semibold text-indigo-600">Columbia University</p>
-                        <p class="text-gray-600">Master of Science in Electrical Engineering</p>
-                        <p class="text-gray-500">Expected 2025</p>
+                        <p class="text-xl font-semibold text-indigo-600">University of Notre Dame</p>
+                        <p class="text-gray-600">PhD student in Electrical Engineering</p>
+                        <p class="text-gray-500">Aug 2025 - Present</p>
                     </div>
-                    <p class="text-gray-600 mb-6">I'm an Electrical Engineering graduate student at Columbia University, passionate about wearable healthcare device, human-computer-interaction, machine learning.</p>
+                    <div class="mb-6">
+                        <p class="text-xl font-semibold text-indigo-600">Columbia University</p>
+                        <p class="text-gray-600">MS in Electrical Engineering (Advanced Master Research Program)</p>
+                        <p class="text-gray-500">Aug 2023 - May 2025</p>
+                    </div>
+                </div>
+                <div class="animate-on-scroll">
+                    <h3 class="text-2xl font-semibold mb-4">Skills</h3>
                     <div class="grid grid-cols-2 gap-4 mb-8">
                         <div class="flex items-center space-x-2">
                             <i class="fas fa-brain text-indigo-600"></i>
@@ -177,54 +190,50 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
+    <!-- Experience -->
+    <section id="experience" class="py-20 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-indigo-600 mb-4">Experience</h2>
+                <div class="w-16 h-1 bg-indigo-600 mx-auto"></div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="bg-white rounded-xl shadow-lg p-8 card-hover animate-on-scroll">
+                    <h3 class="text-xl font-semibold text-indigo-600 mb-2">Research Assistant</h3>
+                    <p class="text-gray-600 font-medium">Columbia University</p>
+                    <p class="text-gray-500 text-sm mb-4">Feb 2024 - May 2025</p>
+                    <p class="text-gray-600">Projects: Automatic Assessment of Robotic Suturing, Single-View 4D Reconstruction of Intersection.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-8 card-hover animate-on-scroll">
+                    <h3 class="text-xl font-semibold text-indigo-600 mb-2">Course Assistant</h3>
+                    <p class="text-gray-600 font-medium">Columbia University</p>
+                    <p class="text-gray-500 text-sm mb-4">Feb 2025 - May 2025</p>
+                    <p class="text-gray-600">Course: Reinforcement Learning.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-8 card-hover animate-on-scroll">
+                    <h3 class="text-xl font-semibold text-indigo-600 mb-2">Course Assistant</h3>
+                    <p class="text-gray-600 font-medium">Columbia University</p>
+                    <p class="text-gray-500 text-sm mb-4">Sep 2024 - Dec 2024</p>
+                    <p class="text-gray-600">Course: Neural Network and Deep Learning.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
     <section id="projects" class="py-20 bg-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold gradient-text mb-4">My Projects</h2>
+                <h2 class="text-4xl font-bold text-indigo-600 mb-4">Projects</h2>
                 <div class="w-16 h-1 bg-indigo-600 mx-auto"></div>
             </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project Card 1 -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover animate-on-scroll">
-                    <img src="/api/placeholder/600/400" alt="Project 1" class="w-full h-48 object-cover">
+            <div class="flex justify-center">
+                <!-- Project 1 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover animate-on-scroll max-w-md">
+                    <img src="./img/project1.jpg" alt="Wearable Sleep Monitor" class="w-full h-48 object-cover">
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Project Name</h3>
-                        <p class="text-gray-600 mb-4">A brief description.</p>
-                        <div class="flex space-x-3">
-                            <a href="#" class="text-indigo-600 hover:text-indigo-800">
-                                <i class="fab fa-github text-xl"></i>
-                            </a>
-                            <a href="#" class="text-indigo-600 hover:text-indigo-800">
-                                <i class="fas fa-external-link-alt text-xl"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project Card 2 -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover animate-on-scroll">
-                    <img src="/api/placeholder/600/400" alt="Project 2" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Project Name</h3>
-                        <p class="text-gray-600 mb-4">Another project.</p>
-                        <div class="flex space-x-3">
-                            <a href="#" class="text-indigo-600 hover:text-indigo-800">
-                                <i class="fab fa-github text-xl"></i>
-                            </a>
-                            <a href="#" class="text-indigo-600 hover:text-indigo-800">
-                                <i class="fas fa-external-link-alt text-xl"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project Card 3 -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover animate-on-scroll">
-                    <img src="/api/placeholder/600/400" alt="Project 3" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Project Name</h3>
-                        <p class="text-gray-600 mb-4">Third project.</p>
+                        <h3 class="text-xl font-semibold mb-2">Wearable Sleep Monitor</h3>
+                        <p class="text-gray-600 mb-4">IoT-enabled wearable device for continuous sleep monitoring with real-time analysis.</p>
                         <div class="flex space-x-3">
                             <a href="#" class="text-indigo-600 hover:text-indigo-800">
                                 <i class="fab fa-github text-xl"></i>
@@ -239,11 +248,31 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-20">
+    <!-- Dola -->
+    <section id="dola" class="py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold gradient-text mb-4">Get In Touch</h2>
+                <h2 class="text-4xl font-bold text-indigo-600 mb-4">Meet Dola <i class="fas fa-cat text-indigo-600"></i></h2>
+                <div class="w-16 h-1 bg-indigo-600 mx-auto mb-4"></div>
+                <p class="text-xl text-gray-600">My adorable companion</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-2">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover animate-on-scroll">
+                    <img src="./img/cat1.jpg" alt="Dola - Photo 1" class="w-full h-64 object-cover">
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover animate-on-scroll">
+                    <img src="./img/cat2.jpg" alt="Dola - Photo 2" class="w-full h-64 object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-20 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-indigo-600 mb-4">Get In Touch</h2>
                 <div class="w-16 h-1 bg-indigo-600 mx-auto"></div>
             </div>
             <div class="grid md:grid-cols-2 gap-12">
@@ -257,7 +286,7 @@
                             </div>
                             <div>
                                 <h4 class="font-semibold">Email</h4>
-                                <p class="text-gray-600">yh3639@columbia.edu</p>
+                                <p class="text-gray-600">yhu22@nd.edu</p>
                             </div>
                         </div>
                         <div class="flex items-center space-x-4">
@@ -266,7 +295,7 @@
                             </div>
                             <div>
                                 <h4 class="font-semibold">Location</h4>
-                                <p class="text-gray-600">New York, United State</p>
+                                <p class="text-gray-600">Indiana, United States</p>
                             </div>
                         </div>
                     </div>
@@ -301,7 +330,7 @@
                 <div class="mb-8 md:mb-0">
                     <span class="text-2xl font-bold">Yiran Hu</span>
                     <p class="text-2xl chinese-text text-gray-400 mt-2">胡怡然</p>
-                    <p class="text-gray-400 mt-2">MS EE Student @ Columbia University</p>
+                    <p class="text-gray-400 mt-2">EE PhD Student @ University of Notre Dame</p>
                 </div>
                 <div class="flex space-x-6">
                     <a href="https://github.com/YiranHu0323" class="text-gray-400 hover:text-white transition-colors">
@@ -316,23 +345,22 @@
     </footer>
 
     <script>
-        // Intersection Observer for scroll animations
+        // Intersection Observer for animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    entry.target.classList.add('fade-in');
                 }
             });
         }, {
             threshold: 0.1
         });
 
-        document.querySelectorAll('.animate-on-scroll, .section-transition').forEach((element) => {
+        document.querySelectorAll('.animate-on-scroll').forEach((element) => {
             observer.observe(element);
         });
 
-        // Smooth scroll for navigation links
+        // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -340,26 +368,14 @@
                 const targetElement = document.querySelector(targetId);
                 
                 if (targetElement) {
-                    // Add fade-out effect to current section
-                    const currentSection = document.querySelector('.section-transition.visible');
-                    if (currentSection) {
-                        currentSection.style.opacity = '0';
-                    }
-
-                    // Smooth scroll to target section
                     targetElement.scrollIntoView({
                         behavior: 'smooth'
                     });
-
-                    // Add fade-in effect to target section after scrolling
-                    setTimeout(() => {
-                        targetElement.classList.add('fade-in');
-                    }, 500);
                 }
             });
         });
 
-        // Add active state to navigation links
+        // Active navigation highlight
         const sections = document.querySelectorAll('section');
         const navLinks = document.querySelectorAll('.nav-link');
 
@@ -378,6 +394,21 @@
                 if (link.getAttribute('href').slice(1) === current) {
                     link.classList.add('text-indigo-600');
                 }
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
             });
         });
     </script>
