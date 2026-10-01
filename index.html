@@ -1,416 +1,174 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yiran Hu - Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap');
-        
-        .gradient-text {
-            background: linear-gradient(45deg, #4F46E5, #06B6D4);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .card-hover {
-            transition: transform 0.3s ease-in-out;
-        }
-        
-        .card-hover:hover {
-            transform: translateY(-5px);
-        }
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="#e3f2fd" name="theme-color"/>
+<meta content="Yiran Hu — second-year Electrical Engineering PhD student at the University of Notre Dame. Research in human–robot interaction, adaptive robotics, and behavioral understanding." name="description"/>
+<title>Yiran Hu | Research</title>
+<style>
+    :root {
+      --indigo: #4f46e5;
+      --indigo-dark: #3730a3;
+      --cyan: #06b6d4;
+      --sky: #e3f2fd;
+      --ink: #1b2941;
+      --muted: #536278;
+      --rule: #dce5ef;
+      --max: 1080px;
+    }
+    *,*::before,*::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #fff; color: var(--ink); font: 17px/1.64 -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    a:focus-visible, summary:focus-visible { outline: 3px solid var(--cyan); outline-offset: 4px; }
+    ::selection { background: #cbdffd; }
+    .wrap { width: min(var(--max), calc(100% - 64px)); margin: 0 auto; }
+    .skip { position: absolute; left: 15px; top: -60px; z-index: 100; background: white; padding: 8px 12px; }
+    .skip:focus { top: 8px; }
+    section[id], footer[id] { scroll-margin-top: 75px; }
+    .topbar { position: sticky; top: 0; z-index: 30; background: #fff; border-bottom: 1px solid var(--rule); }
+    .nav { display:flex; align-items:center; justify-content:space-between; gap:22px; min-height:68px; }
+    .wordmark { font-weight: 810; font-size: 20px; letter-spacing: -.055em; white-space: nowrap; }
+    .wordmark b { color: var(--indigo); }
+    .navlinks { display:flex; align-items:center; gap:30px; font-size:15px; font-weight:600; color:#526075; }
+    .navlinks a:hover,.mobile-links a:hover, .plainlink:hover, .social a:hover { color: var(--indigo); }
+        .mobile-menu { display: none; position: relative; }
+    .mobile-menu summary { list-style: none; cursor:pointer; border: 1px solid var(--rule); padding:6px 11px; color:var(--ink); font-weight:600; font-size:15px; }
+    .mobile-menu summary::-webkit-details-marker { display:none; }
+    .mobile-links { position:absolute; right:0; top:40px; width:180px; background:white; border:1px solid var(--rule); display:flex; flex-direction:column; padding:8px; z-index:10; }
+    .mobile-links a { padding:10px 10px; font-size:15px; }
 
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease-out;
-        }
+    /* Flat hero: original light blue, with no gradient, shadow, or floating card. */
+    .intro { background: var(--sky); border-bottom:1px solid #d2e7f6; }
+    .intro-grid { display:grid; grid-template-columns:minmax(0,1.65fr) minmax(245px,.75fr); gap:62px; padding:49px 0 48px; }
+    .kicker,.smallcap { color:var(--indigo-dark); text-transform:uppercase; font-weight:780; font-size:12.5px; letter-spacing:.12em; }
+    .kicker { margin:0 0 9px; }
+    h1,h2,h3,p { margin-top:0; }
+    h1 { font-size:clamp(45px,5.3vw,66px); letter-spacing:-.065em; line-height:1.1; margin:0 0 9px; color:#182b4b; font-weight:800; }
+    h1 em { color:var(--indigo); font-style:normal; }
+    h1 .han { font-size:24px; vertical-align:middle; font-weight:500; letter-spacing:.02em; color:#455b78; margin-left:10px; white-space:nowrap; }
+    .role { font-size:18px; font-weight:650; color:#344965; margin: 0 0 13px; }
+    .bio { max-width:690px; font-size:17px; line-height:1.76; color:#42536b; margin-bottom:17px; }
+    .links { display:flex; flex-wrap:wrap; gap:12px 27px; }
+    .plainlink { color:var(--indigo-dark); font-size:15px; font-weight:750; border-bottom:1px solid var(--cyan); padding-bottom:2px; }
+    .interests { padding:7px 0 0 25px; border-left:2px solid #b5d5ed; align-self:center; }
+    .interests .smallcap { margin:0 0 13px; }
+    .interests div { padding:9px 0; border-top:1px solid #c9dcec; font-weight:650; font-size:15.5px; line-height:1.4; }
 
-        .animate-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    main > section:not(.intro):not(.contact) { padding-top:39px; }
+    .heading { display:flex; align-items:baseline; justify-content:space-between; gap:16px; border-bottom:1px solid #b5c7de; padding-bottom:9px; margin-bottom:4px; }
+    h2 { font-size:28px; letter-spacing:-.035em; margin:0; line-height:1.35; font-weight:770; }
+        .study { display:grid; grid-template-columns: 74px minmax(190px,.9fr) minmax(0,1.8fr); gap:15px; border-bottom:1px solid var(--rule); padding:21px 0 22px; }
+    .index { color:var(--indigo); font-size:14px; font-weight:760; padding-top:4px; letter-spacing:.08em; }
+    .study h3 { font-size:19px; line-height:1.39; letter-spacing:-.014em; font-weight:720; margin:0 0 6px; }
+    .meta { display:block; color:#648098; font-size:13.5px; font-weight:600; }
+    .study p { color:#526177; font-size:16px; line-height:1.76; margin:0; }
 
-        .hero-bg {
-            background: #e3f2fd;
-        }
+    .columns { display:grid; grid-template-columns:1fr 1fr; gap:42px; padding-top:21px; }
+    .column-label { color:var(--indigo-dark); text-transform:uppercase; letter-spacing:.11em; font-size:13px; font-weight:780; margin:0 0 10px; }
+     .entry { display:grid; grid-template-columns:102px 1fr; gap:14px; border-top:1px solid var(--rule); padding:14px 0; }
+    .entry:first-of-type { border-top:0; }
+    .dates { font-size:13px; font-weight:700; color:#718198; padding-top:2px; white-space:nowrap; }
+    .entry strong { font-size:16px; line-height:1.4; display:block; }
+    .entry p { font-size:14.5px; color:var(--muted); margin:4px 0 0; line-height:1.6; }
+    .footnote { color:#738296; font-size:11px; margin:7px 0 0; }
 
-        .chinese-text {
-            font-family: 'Noto Sans SC', sans-serif;
-        }
+    .paper { display:grid; grid-template-columns:134px 1fr; gap:17px; padding:17px 0; border-bottom:1px solid var(--rule); }
+    .paper:last-of-type { border-bottom:0; }
+    .type { font-size:13.5px; font-weight:760; color:var(--indigo-dark); padding-top:2px; }
+    .type.cyan { color:#08788a; }
+    .paper .reference { font-size:16px; color:var(--ink); line-height:1.75; margin:0; }
+    .paper .self { color:var(--indigo-dark); font-weight:800; }
+    .paper .paper-title { text-decoration:underline; text-decoration-color:#a9cce0; text-underline-offset:3px; text-decoration-thickness:1px; }
+    .paper .paper-title:hover, .paper .doi:hover { color:var(--indigo-dark); text-decoration-color:var(--indigo); }
+    .paper .doi { color:var(--indigo-dark); text-decoration:underline; text-decoration-color:#a9cce0; text-underline-offset:3px; overflow-wrap:anywhere; }
+    
+    .publication-note { color:#738296; font-size:12.5px; margin:9px 0 0; }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
-        .nav-link {
-            position: relative;
-            transition: color 0.3s ease;
-            cursor: pointer;
-            padding: 0.5rem 1rem;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -2px;
-            left: 50%;
-            background-color: #4F46E5;
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
-
-        .nav-link:hover::after {
-            width: 80%;
-        }
-
-        nav {
-            z-index: 9999 !important;
-            position: fixed !important;
-        }
-
-        body {
-            padding-top: 0;
-        }
-
-        section {
-            scroll-margin-top: 80px;
-        }
-    </style>
+    .contact { background: #e3f2fd; border-top:1px solid #d2e7f6; margin-top:45px; }
+    .contact-inner { display:flex; justify-content:space-between; align-items:center; gap:25px; padding:24px 0; }
+    .contact h2 { font-size:26px; margin:0; }
+    .social { display:flex; flex-wrap:wrap; gap:12px 24px; }
+    .social a { font-size:14.5px; font-weight:750; color:var(--indigo-dark); border-bottom:1px solid var(--cyan); }
+    footer { border-top:1px solid var(--rule); background:#fff; }
+    .footer-inner { min-height:60px; display:flex; justify-content:space-between; align-items:center; color:#78869a; font-size:13px; gap:12px; }
+    .footer-inner a { color:var(--indigo-dark); }
+    @media (max-width:850px) {
+      .intro-grid { gap:30px; grid-template-columns:minmax(0,1.4fr) minmax(200px,.65fr); }
+      .study { grid-template-columns:45px minmax(180px,.9fr) minmax(0,1.3fr); }
+      .columns { gap:27px; }
+    }
+    @media (max-width:710px) {
+      .wrap { width:min(var(--max),calc(100% - 36px)); }
+      .nav { min-height:58px; }
+      .navlinks { display:none; }
+      .mobile-menu { display:block; }
+      .intro-grid { grid-template-columns:1fr; gap:23px; padding:39px 0 33px; }
+      .interests { border-left:0; border-top:2px solid #bed8ed; padding:11px 0 0; }
+      .interests div { display:inline-block; border:0; margin:0 14px 0 0; padding:2px 0; font-size:14px; }
+      .interests .smallcap { margin-bottom:7px; }
+      .study { grid-template-columns:36px 1fr; gap:5px 12px; padding:17px 0; }
+      .study-body { grid-column:2; }
+      .study h3 { font-size:18px; }
+      .columns { grid-template-columns:1fr; gap:19px; }
+      main > section:not(.intro):not(.contact) { padding-top:31px; }
+      .contact-inner { align-items:flex-start; flex-direction:column; gap:14px; }
+    }
+    @media (max-width:420px) {
+      body { font-size:16px; }
+      h1 { font-size:46px; }
+      h1 .han { font-size:18px; }
+      .heading { flex-direction:column; gap:2px; }
+      h2 { font-size:25px; }
+      .paper { grid-template-columns:1fr; gap:3px; }
+      .footer-inner { padding:17px 0; min-height:0; flex-direction:column; align-items:flex-start; }
+    }
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
+  </style>
 </head>
-<body class="bg-gray-50">
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md shadow-sm" style="z-index: 9999;">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center">
-                    <span class="text-xl font-bold text-indigo-600"></span>
-                </div>
-                <div class="hidden md:flex items-center space-x-4">
-                    <a href="#home" class="nav-link text-gray-600 hover:text-indigo-600 transition-colors">Home</a>
-                    <a href="#about" class="nav-link text-gray-600 hover:text-indigo-600 transition-colors">About</a>
-                    <a href="#experience" class="nav-link text-gray-600 hover:text-indigo-600 transition-colors">Experience</a>
-                    <a href="#projects" class="nav-link text-gray-600 hover:text-indigo-600 transition-colors">Projects</a>
-                    <a href="#dola" class="nav-link text-gray-600 hover:text-indigo-600 transition-colors">Dola</a>
-                    <a href="#contact" class="nav-link text-gray-600 hover:text-indigo-600 transition-colors">Contact</a>
-                </div>
-                <!-- Mobile menu button -->
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-button" class="text-gray-600 hover:text-indigo-600 focus:outline-none">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-md border-t">
-            <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="#home" class="block px-3 py-2 text-gray-600 hover:text-indigo-600 transition-colors">Home</a>
-                <a href="#about" class="block px-3 py-2 text-gray-600 hover:text-indigo-600 transition-colors">About</a>
-                <a href="#experience" class="block px-3 py-2 text-gray-600 hover:text-indigo-600 transition-colors">Experience</a>
-                <a href="#projects" class="block px-3 py-2 text-gray-600 hover:text-indigo-600 transition-colors">Projects</a>
-                <a href="#dola" class="block px-3 py-2 text-gray-600 hover:text-indigo-600 transition-colors">Dola</a>
-                <a href="#contact" class="block px-3 py-2 text-gray-600 hover:text-indigo-600 transition-colors">Contact</a>
-            </div>
-        </div>
-    </nav>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar"><div class="wrap nav">
+<a class="wordmark" href="#home">YIRAN <b>HU.</b></a>
+<nav aria-label="Primary navigation" class="navlinks"><a href="#research">Research</a><a href="#background">Background</a><a href="#publications">Publications</a><a href="#contact">Contact</a></nav>
+<details class="mobile-menu"><summary>Menu ☰</summary><nav aria-label="Mobile navigation" class="mobile-links"><a href="#research">Research</a><a href="#background">Background</a><a href="#publications">Publications</a><a href="#contact">Contact</a></nav></details>
+</div></header>
+<main id="main">
+<section class="intro" id="home"><div class="wrap intro-grid">
+<div>
+<h1>Yiran <em>Hu</em><span class="han">胡怡然</span></h1>
+<p class="role">Second-year PhD Student in Electrical Engineering · University of Notre Dame</p>
+<p class="bio">I study how intelligent robots can understand and adapt to people. At Notre Dame's Intelligent Interaction Research Lab, advised by Prof. Zhi Zheng, my research focuses on autonomy-supportive robot assistance, multimodal behavior understanding, and decision-making under uncertainty.</p>
+<div class="links"><a class="plainlink" href="mailto:yhu22@nd.edu">Email ↗</a><a class="plainlink" href="https://github.com/YiranHu0323" rel="noopener" target="_blank">GitHub ↗</a><a class="plainlink" href="https://www.linkedin.com/in/yiranhu0323/" rel="noopener" target="_blank">LinkedIn ↗</a></div>
+</div>
+<aside aria-label="Research interests" class="interests"><p class="smallcap">Research interests</p><div>Human-centered robotics</div><div>Autonomy-aware interaction</div><div>Gaze &amp; behavior analysis</div></aside>
+</div></section>
+<section aria-labelledby="research-heading" class="wrap" id="research">
+<div class="heading"><h2 id="research-heading">Research</h2></div>
+<article class="study"><span class="index">01</span><div><h3>Autonomy-aware robot assistance</h3><span class="meta">University of Notre Dame</span></div><div class="study-body"><p>Designing an Autonomy-POMDP that infers a user's latent autonomy from gaze observations and adapts robot assistance accordingly. I developed an LLM simulation with nine user personas and am extending this approach to real-world collaborative tasks.</p></div></article>
+<article class="study"><span class="index">02</span><div><h3>Inclusive industrial robotics</h3><span class="meta">University of Notre Dame</span></div><div class="study-body"><p>Studying how autistic workers perceive industrial robots as potential collaborators. Applied Self-Determination Theory to interviews and contributed to preliminary design principles for neuroaffirming human–robot interaction.</p></div></article>
+<article class="study"><span class="index">03</span><div><h3>Anticipatory gaze &amp; reward processing</h3><span class="meta">University of Notre Dame</span></div><div class="study-body"><p>Analyzing preschoolers' anticipatory gaze and attention, including eye-tracking feature extraction, data quality assessment, and behavioral analysis pipelines.</p></div></article>
+<article class="study"><span class="index">04</span><div><h3>Computer vision for physical tasks</h3><span class="meta">Columbia University</span></div><div class="study-body"><p>Worked on automatic robotic suturing assessment with Video Swin Transformers and technical-skill prediction, alongside single-view 4D reconstruction using point clouds and learned geometric representations.</p></div></article>
+</section>
+<section aria-labelledby="background-heading" class="wrap" id="background">
+<div class="heading"><h2 id="background-heading">Academic background</h2></div>
+<div class="columns">
+<div><p class="column-label">Education</p><div class="entry"><span class="dates">2025 – now</span><div><strong>PhD · Electrical Engineering</strong><p>University of Notre Dame · South Bend, IN</p></div></div><div class="entry"><span class="dates">2023 – 2025</span><div><strong>MS · Electrical Engineering</strong><p>Columbia University · Advanced Master Research Track<br/>Tesla Scholarship &amp; MS EE Honor Program</p></div></div></div>
+<div><p class="column-label">Research &amp; teaching</p><div class="entry"><span class="dates">2025 – now</span><div><strong>Research Assistant · Notre Dame</strong><p>Intelligent Interaction Research Lab · Prof. Zhi Zheng</p></div></div><div class="entry"><span class="dates">Fall 2026</span><div><strong>Teaching Assistant · Notre Dame</strong><p>Introduction to Electrical and Computer Engineering</p></div></div><div class="entry"><span class="dates">2024 – 2025</span><div><strong>Research Assistant · Columbia</strong><p>ZKLab · Prof. Zoran Kostic</p></div></div><div class="entry"><span class="dates">2024 – 2025</span><div><strong>Course Assistant · Columbia</strong><p>Reinforcement Learning; Neural Networks &amp; Deep Learning</p></div></div></div>
+</div>
+</section>
+<section aria-labelledby="pub-heading" class="wrap" id="publications">
+<div class="heading"><h2 id="pub-heading">Papers &amp; presentations</h2></div>
 
-    <!-- Hero -->
-    <section id="home" class="hero-bg min-h-screen flex items-center justify-center text-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
-            <div class="text-center">
-                <h1 class="text-5xl md:text-7xl font-bold mb-6">Hello, I'm <span class="text-indigo-600">Yiran Hu</span> <span class="chinese-text text-indigo-600">(胡怡然)</span></h1>
-                <p class="text-xl md:text-2xl mb-4 text-gray-700">PhD Student in Electrical Engineering</p>
-                <p class="text-lg md:text-xl mb-8 text-gray-700">University of Notre Dame</p>
-                <div class="flex justify-center space-x-4">
-                    <a href="#projects" class="bg-indigo-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-indigo-700 transition-colors">View Projects</a>
-                    <a href="#contact" class="border-2 border-indigo-600 text-indigo-600 px-8 py-3 rounded-full font-semibold hover:bg-indigo-600 hover:text-white transition-colors">Contact Me</a>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- About -->
-    <section id="about" class="py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-indigo-600 mb-4">About Me</h2>
-                <div class="w-16 h-1 bg-indigo-600 mx-auto mb-6"></div>
-                <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-8">I'm a first year Electrical Engineering PhD student at University of Notre Dame, passionate about human-robot-interaction, computer vision, and machine learning.</p>
-            </div>
-            <div class="grid md:grid-cols-2 gap-12 items-start">
-                <div class="animate-on-scroll">
-                    <h3 class="text-2xl font-semibold mb-4">Education</h3>
-                    <div class="mb-6">
-                        <p class="text-xl font-semibold text-indigo-600">University of Notre Dame</p>
-                        <p class="text-gray-600">PhD Student in Electrical Engineering</p>
-                        <p class="text-gray-500">Aug 2025 - Present</p>
-                    </div>
-                    <div class="mb-6">
-                        <p class="text-xl font-semibold text-indigo-600">Columbia University</p>
-                        <p class="text-gray-600">MS in Electrical Engineering (Advanced Master Research Program)</p>
-                        <p class="text-gray-500">Aug 2023 - May 2025</p>
-                    </div>
-                </div>
-                <div class="animate-on-scroll">
-                    <h3 class="text-2xl font-semibold mb-4">Skills</h3>
-                    <div class="grid grid-cols-2 gap-4 mb-8">
-                        <div class="flex items-center space-x-2">
-                            <i class="fas fa-brain text-indigo-600"></i>
-                            <span>Machine Learning</span>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <i class="fas fa-eye text-indigo-600"></i>
-                            <span>Computer Vision</span>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <i class="fas fa-wave-square text-indigo-600"></i>
-                            <span>Signal Processing</span>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <i class="fas fa-code text-indigo-600"></i>
-                            <span>Programming</span>
-                        </div>
-                    </div>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="px-4 py-2 bg-indigo-100 text-indigo-600 rounded-full text-sm">Python</span>
-                        <span class="px-4 py-2 bg-indigo-100 text-indigo-600 rounded-full text-sm">C</span>
-                        <span class="px-4 py-2 bg-indigo-100 text-indigo-600 rounded-full text-sm">MATLAB</span>
-                        <span class="px-4 py-2 bg-indigo-100 text-indigo-600 rounded-full text-sm">Simulink</span>
-                        <span class="px-4 py-2 bg-indigo-100 text-indigo-600 rounded-full text-sm">SolidWorks</span>
-                        <span class="px-4 py-2 bg-indigo-100 text-indigo-600 rounded-full text-sm">Verilog</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Experience -->
-    <section id="experience" class="py-20 bg-gray-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-indigo-600 mb-4">Experience</h2>
-                <div class="w-16 h-1 bg-indigo-600 mx-auto"></div>
-            </div>
-            <div class="grid md:grid-cols-2 gap-12">
-                <div class="bg-white rounded-xl shadow-lg p-8 card-hover animate-on-scroll">
-                    <h3 class="text-xl font-semibold text-indigo-600 mb-2">Research Assistant</h3>
-                    <p class="text-gray-600 font-medium">Columbia University</p>
-                    <p class="text-gray-500 text-sm mb-4">Feb 2024 - May 2025</p>
-                    <p class="text-gray-600">Projects: Automatic Assessment of Robotic Suturing, Single-View 4D Reconstruction of Intersection.</p>
-                </div>
-                <div class="bg-white rounded-xl shadow-lg p-8 card-hover animate-on-scroll">
-                    <h3 class="text-xl font-semibold text-indigo-600 mb-2">Course Assistant</h3>
-                    <p class="text-gray-600 font-medium">Columbia University</p>
-                    <p class="text-gray-500 text-sm mb-4">Feb 2025 - May 2025</p>
-                    <p class="text-gray-600">Course: Reinforcement Learning.</p>
-                </div>
-                <div class="bg-white rounded-xl shadow-lg p-8 card-hover animate-on-scroll">
-                    <h3 class="text-xl font-semibold text-indigo-600 mb-2">Course Assistant</h3>
-                    <p class="text-gray-600 font-medium">Columbia University</p>
-                    <p class="text-gray-500 text-sm mb-4">Sep 2024 - Dec 2024</p>
-                    <p class="text-gray-600">Course: Neural Network and Deep Learning.</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Projects -->
-    <section id="projects" class="py-20 bg-gray-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-indigo-600 mb-4">Projects</h2>
-                <div class="w-16 h-1 bg-indigo-600 mx-auto"></div>
-            </div>
-            <div class="flex justify-center">
-                <!-- Project 1 -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover animate-on-scroll max-w-md">
-                    <img src="./img/project1.jpg" alt="Wearable Sleep Monitor" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Wearable Sleep Monitor</h3>
-                        <p class="text-gray-600 mb-4">IoT-enabled wearable device for continuous sleep monitoring with real-time analysis.</p>
-                        <div class="flex space-x-3">
-                            <a href="#" class="text-indigo-600 hover:text-indigo-800">
-                                <i class="fab fa-github text-xl"></i>
-                            </a>
-                            <a href="#" class="text-indigo-600 hover:text-indigo-800">
-                                <i class="fas fa-external-link-alt text-xl"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Dola -->
-    <section id="dola" class="py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-indigo-600 mb-4">Meet Dola <i class="fas fa-cat text-indigo-600"></i></h2>
-                <div class="w-16 h-1 bg-indigo-600 mx-auto mb-4"></div>
-                <p class="text-xl text-gray-600">My adorable companion</p>
-            </div>
-            <div class="grid md:grid-cols-2 gap-2">
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover animate-on-scroll">
-                    <img src="./img/cat1.jpg" alt="Dola - Photo 1" class="w-full h-64 object-cover">
-                </div>
-
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover animate-on-scroll">
-                    <img src="./img/cat2.jpg" alt="Dola - Photo 2" class="w-full h-64 object-cover">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="py-20 bg-gray-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-indigo-600 mb-4">Get In Touch</h2>
-                <div class="w-16 h-1 bg-indigo-600 mx-auto"></div>
-            </div>
-            <div class="grid md:grid-cols-2 gap-12">
-                <div class="animate-on-scroll">
-                    <h3 class="text-2xl font-semibold mb-4">Let's Connect</h3>
-                    <p class="text-gray-600 mb-8">I'm always open to new opportunities and collaborations. Feel free to reach out!</p>
-                    <div class="space-y-4">
-                        <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center">
-                                <i class="fas fa-envelope text-indigo-600"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold">Email</h4>
-                                <p class="text-gray-600">yhu22@nd.edu</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center">
-                                <i class="fas fa-map-marker-alt text-indigo-600"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold">Location</h4>
-                                <p class="text-gray-600">Indiana, United States</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="animate-on-scroll">
-                    <div class="bg-white rounded-xl shadow-lg p-8">
-                        <form>
-                            <div class="mb-6">
-                                <label class="block text-gray-700 text-sm font-semibold mb-2">Name</label>
-                                <input type="text" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600">
-                            </div>
-                            <div class="mb-6">
-                                <label class="block text-gray-700 text-sm font-semibold mb-2">Email</label>
-                                <input type="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600">
-                            </div>
-                            <div class="mb-6">
-                                <label class="block text-gray-700 text-sm font-semibold mb-2">Message</label>
-                                <textarea rows="4" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600"></textarea>
-                            </div>
-                            <button type="submit" class="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-colors">Send Message</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-8 md:mb-0">
-                    <span class="text-2xl font-bold">Yiran Hu</span>
-                    <p class="text-2xl chinese-text text-gray-400 mt-2">胡怡然</p>
-                    <p class="text-gray-400 mt-2">EE PhD Student @ University of Notre Dame</p>
-                </div>
-                <div class="flex space-x-6">
-                    <a href="https://github.com/YiranHu0323" class="text-gray-400 hover:text-white transition-colors">
-                        <i class="fab fa-github text-xl"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/yiranhu0323/" class="text-gray-400 hover:text-white transition-colors">
-                        <i class="fab fa-linkedin text-xl"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Intersection Observer for animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
-
-        document.querySelectorAll('.animate-on-scroll').forEach((element) => {
-            observer.observe(element);
-        });
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Active navigation highlight
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.nav-link');
-
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (pageYOffset >= sectionTop - sectionHeight / 3) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('text-indigo-600');
-                if (link.getAttribute('href').slice(1) === current) {
-                    link.classList.add('text-indigo-600');
-                }
-            });
-        });
-
-        // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
-    </script>
+<article class="paper"><span class="type">Conference · 2026</span><p class="reference">E. Kim, <strong class="self">Y. Hu</strong>, K. Kim, V. V. Izaac, K. Stastny, C. Branscome, J. Carpini, C. H. Park, Z. Zheng, M. Jeon, A. Scarpa, and S. Kim, “<a class="paper-title" href="https://ras.papercept.net/conferences/conferences/ROMAN26/program/ROMAN26_ContentListWeb_2.html" rel="noopener noreferrer" target="_blank">Supporting autistic workers through industrial robots: An exploratory self-determination theory analysis of requirements and design principles</a>,” in <em>Proc. 35th IEEE Int. Conf. Robot and Human Interactive Communication (RO-MAN)</em>, Kitakyushu, Japan, Aug. 2026.</p></article><article class="paper"><span class="type">Conference poster · 2026</span><p class="reference">E. Fox, <strong class="self">Y. Hu</strong>, M. McEllin, Y. Kuo, Z. Zheng, and C. Clements, “<a class="paper-title" href="https://brainlab.nd.edu/assets/656292/2026_parc_final.pdf" rel="noopener noreferrer" target="_blank">Evaluating ePeekaboo: A novel eye tracking paradigm for studying anticipatory behavior in preschool-aged children</a>,” poster presented at the <em>Purdue Autism Research Conference</em>, 2026.</p></article><article class="paper"><span class="type">Journal · 2025</span><p class="reference">S. Choksi, S. Narasimhan, M. Ballo, M. Turkcan, <strong class="self">Y. Hu</strong>, C. Zang, A. Farrell, B. King, J. Nussbaum, A. Reisner, Z. Kostic, G. Taffurelli, and F. Filicori, “<a class="paper-title" href="https://doi.org/10.20517/ais.2024.84" rel="noopener noreferrer" target="_blank">Automatic assessment of robotic suturing utilizing computer vision in a dry-lab simulation</a>,” <em>Artificial Intelligence Surgery</em>, vol. 5, no. 2, pp. 160–169, 2025. doi: <a class="doi" href="https://doi.org/10.20517/ais.2024.84" rel="noopener noreferrer" target="_blank">10.20517/ais.2024.84</a>.</p></article></section>
+<section class="contact" id="contact"><div class="wrap contact-inner"><div><h2>Get in touch</h2></div><div class="social"><a href="mailto:yhu22@nd.edu">yhu22@nd.edu ↗</a><a href="https://github.com/YiranHu0323" rel="noopener" target="_blank">GitHub ↗</a><a href="https://www.linkedin.com/in/yiranhu0323/" rel="noopener" target="_blank">LinkedIn ↗</a></div></div></section>
+</main>
+<footer><div class="wrap footer-inner"><span>© 2026 Yiran Hu · University of Notre Dame</span><a href="#home">Back to top ↑</a></div></footer>
+<script>const menu=document.querySelector('.mobile-menu');menu.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',()=>menu.open=false));</script>
 </body>
 </html>
